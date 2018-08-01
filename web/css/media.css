@@ -7,9 +7,21 @@
     header {
 
         width: 100%;
+        margin: 54px;
         /*padding-left: 50px;*/
         /*overflow: hidden;*/
         overflow-y: auto;
+
+        box-sizing: border-box;
+        /*padding-right: 30px;*/
+    }
+    header div {
+        padding-left: 30px;
+        padding-right: 0;
+        padding-bottom: 0;
+    }
+    header div:last-child {
+        padding-right: 30px;
     }
     .block {
         /*margin: 0;*/
@@ -24,6 +36,7 @@
     }
 
     #languages {
+        font-size: 10px;
         flex-direction: row;
     }
 
