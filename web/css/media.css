@@ -18,4 +18,16 @@
         /*border-bottom: 1px solid gray;*/
         /*border-radius: 0;*/
     }
+
+    footer {
+        flex-direction: column;
+    }
+
+    #languages {
+        flex-direction: row;
+    }
+
+    #languages div {
+        padding-right: 10px;
+    }
 }
