@@ -1,15 +1,21 @@
 @media only screen and (max-width : 640px) {
 
     body {
-        padding-bottom: 0;
+        font-size: 20px;
+        /*padding-bottom: 0;*/
     }
     header {
+
+        width: 100%;
+        /*padding-left: 50px;*/
+        /*overflow: hidden;*/
+        overflow-y: auto;
     }
     .block {
-        margin: 0;
-        border: none;
+        /*margin: 0;*/
+        /*border: none;*/
 
-        border-bottom: 1px solid gray;
-        border-radius: 0;
+        /*border-bottom: 1px solid gray;*/
+        /*border-radius: 0;*/
     }
 }

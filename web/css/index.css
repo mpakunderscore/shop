@@ -4,6 +4,7 @@ html, body {
 
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+    font-size: 26px;
     /*letter-spacing: 1px;*/
     /*line-height: 24px;*/
 }
@@ -27,23 +28,29 @@ a:hover {
     color: rgba(20, 137, 181, 0.76);
 }
 
-.block {
-    position: relative;
+header {
+    display: flex;
+    flex-direction: row;
+    margin: 50px;
+}
 
-    margin-top: 50px;
+header > div {
+    padding: 20px;
+}
+
+main {
     width: 100%;
     max-width: 800px;
-    /*height: 250px;*/
+}
 
-    /*background-color: white;*/
+.block {
+    width: 100%;
+    background-color: red;
+    /*padding: 20px;*/
+    margin-bottom: 50px;
+}
 
-    /*border: 1px solid white;*/
-
-    z-index: 1;
-
-    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);*/
-    transition: box-shadow 5s ease-in-out;
-
-    border-radius: 2px;
-    overflow: hidden;
+.block img {
+    width: 100%;
+    display: block;
 }
