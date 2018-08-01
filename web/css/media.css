@@ -7,7 +7,7 @@
     header {
 
         width: 100%;
-        margin: 54px;
+        margin: 60px;
         /*padding-left: 50px;*/
         /*overflow: hidden;*/
         overflow-y: auto;
@@ -16,9 +16,12 @@
         /*padding-right: 30px;*/
     }
     header div {
+        padding-left: 15px;
+        padding-right: 15px;
+        /*padding-bottom: 0;*/
+    }
+    header div:first-child {
         padding-left: 30px;
-        padding-right: 0;
-        padding-bottom: 0;
     }
     header div:last-child {
         padding-right: 30px;
@@ -36,11 +39,12 @@
     }
 
     #languages {
-        font-size: 10px;
+        font-size: 14px;
         flex-direction: row;
     }
 
     #languages div {
         padding-right: 10px;
+        padding-bottom: 0;
     }
 }
