@@ -32,10 +32,26 @@ header {
     display: flex;
     flex-direction: row;
     margin: 50px;
+
+    /*font-weight: 400;*/
+    /*color: rgba(0, 0, 0, 0.6);*/
 }
 
 header > div {
     padding: 20px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+header > div:hover {
+    cursor: pointer;
+    /*font-weight: 600;*/
+    border-bottom: 1px solid black;
+    /*color: rgba(0, 0, 0, 0.9);*/
+}
+
+header > div.active {
+    border-top: 1px solid black;
 }
 
 main {
@@ -45,12 +61,59 @@ main {
 
 .block {
     width: 100%;
-    background-color: red;
+    /*background-color: red;*/
     /*padding: 20px;*/
     margin-bottom: 50px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .block img {
     width: 100%;
     display: block;
+}
+
+.block:hover {
+    /*border: 1px solid black;*/
+
+    transition: box-shadow 5s ease-in-out;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 800px;
+
+    font-size: 12px;
+    /*padding: 20px;*/
+}
+
+footer div {
+    padding: 20px;
+}
+
+#languages {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+#languages div:first-child {
+    font-weight: 600;
+}
+
+#languages div {
+
+}
+
+#languages div:hover {
+    /*cursor: pointer;*/
+    font-weight: 600;
 }
