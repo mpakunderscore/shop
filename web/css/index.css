@@ -64,18 +64,19 @@ main {
     /*background-color: red;*/
     /*padding: 20px;*/
     margin-bottom: 50px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
 }
 
 .block img {
     width: 100%;
     display: block;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .block:hover {
     /*border: 1px solid black;*/
 
-    transition: box-shadow 5s ease-in-out;
+    /*transition: box-shadow 5s ease-in-out;*/
 }
 
 footer {
@@ -116,4 +117,9 @@ footer div {
 #languages div:hover {
     /*cursor: pointer;*/
     font-weight: 600;
+}
+
+.text {
+    font-size: 22px;
+    padding: 10px;
 }
