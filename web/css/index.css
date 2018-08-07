@@ -4,7 +4,7 @@ html, body {
 
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    font-size: 26px;
+    font-size: 22px;
     /*letter-spacing: 1px;*/
     /*line-height: 24px;*/
 }
@@ -28,11 +28,31 @@ a:hover {
     color: rgba(20, 137, 181, 0.76);
 }
 
+#top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+
+    font-size: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+#top input {
+    font-size: 20px;
+}
+
+textarea, select, input, button { outline: none; }
+
+
 header {
     display: flex;
     flex-direction: row;
     margin: 50px;
 
+    font-size: 26px;
     /*font-weight: 400;*/
     /*color: rgba(0, 0, 0, 0.6);*/
 }
@@ -120,6 +140,6 @@ footer div {
 }
 
 .text {
-    font-size: 22px;
+    /*font-size: 22px;*/
     padding: 10px;
 }
