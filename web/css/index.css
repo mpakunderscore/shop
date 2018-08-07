@@ -7,7 +7,7 @@ html, body {
 
     font-weight: 300;
 
-    --font-size: 22px;
+    --font-size: 16px;
     font-size: var(--font-size);
     /*letter-spacing: 1px;*/
     /*line-height: 24px;*/
@@ -41,11 +41,17 @@ a:hover {
     padding: 20px 40px;
     box-sizing: border-box;
 
+    margin-top: 50px;;
+
     font-size: 16px;
     width: 100%;
     max-width: 800px;
 
-    background-color: whitesmoke;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,0.3) 0%, rgba(0,212,255,0.3) 0%, rgba(238,35,13,0.3) 100%);
+    /*background-color: lightgreen;*/
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #top > div {
@@ -79,7 +85,12 @@ header {
     /*font-weight: 400;*/
     /*color: rgba(0, 0, 0, 0.6);*/
 
-    background-color: whitesmoke;
+    /*background-color: whitesmoke;*/
+
+
+
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header > div {
@@ -124,23 +135,33 @@ main {
     overflow: hidden;
 
 
-    background-color: rgba(14, 230, 13, 0.16);
+    /*background-color: rgba(14, 230, 13, 0.16);*/
     /*padding: 20px;*/
     margin-bottom: 50px;
 
+    border-radius: 3px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 
 }
 
 .block .text {
-    /*font-size: 22px;*/
+    font-size: 26px;
     position: absolute;
     padding: 20px;
+    z-index: 1;
 }
 
 .block img {
     width: 100%;
     display: block;
+    z-index: 0;
+
+    filter: blur(3px) saturate(3);
+    transition: 1s filter;
+}
+
+.block img:hover {
+    filter: blur(0);
 }
 
 .block:hover {

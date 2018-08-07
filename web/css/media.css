@@ -4,6 +4,9 @@
         font-size: 20px;
         /*padding-bottom: 0;*/
     }
+    #top #search {
+        display: none;
+    }
     header {
 
         width: 100%;
@@ -16,6 +19,9 @@
         /*padding-right: 30px;*/
     }
     header div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding-left: 15px;
         padding-right: 15px;
         /*padding-bottom: 0;*/
@@ -38,13 +44,7 @@
         flex-direction: column;
     }
 
-    #languages {
-        font-size: 14px;
-        flex-direction: row;
-    }
-
-    #languages div {
-        padding-right: 10px;
-        padding-bottom: 0;
+    .block {
+        max-height: 140px;
     }
 }
