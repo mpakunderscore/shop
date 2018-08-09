@@ -139,6 +139,27 @@ main {
     max-width: var(--height);
 }
 
+.items {
+    display: none;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.items .images {
+    float: right;
+    padding-left: 20px;
+}
+
+.items .name {
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
+.items .price {
+    font-weight: 700;
+    padding-top: 10px;
+}
+
 footer {
     display: flex;
     flex-direction: row;

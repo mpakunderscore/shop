@@ -21,6 +21,10 @@ app.get('/items', function (request, response) {
     response.json(state.items);
 });
 
+app.get('/update', function (request, response) {
+    require('./server/spreadsheet.js')(state);
+});
+
 // let database = require('./server/database.js');
 
 let spreadsheet = require('./server/spreadsheet.js')(state);

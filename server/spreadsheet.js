@@ -46,6 +46,10 @@ doc.getInfo(function(err, info) {
             if (cell.col === 1) {
                 item = {};
                 item.name = cell.value;
+
+                if (item.name === "")
+                    return;
+
                 globalState.items.push(item)
             }
 
