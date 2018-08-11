@@ -14,22 +14,21 @@ xhttp.open("GET", "/items", true);
 xhttp.setRequestHeader("Content-type", "application/json");
 xhttp.send("JSON");
 
-
-
-
 function addItems(block) {
+
+    // console.log(block.innerHTML)
 
     let items = "";
 
     for (let i = 0; i < state.items.length; i++) {
 
             items +=
-            "<div>" +
+            "<div class='item'>" +
             "<div class='images'><img src='" + state.items[i].images.split('\n')[0] + "'>" + "</div>" +
             "<div class='name'>" + state.items[i].name + "</div>" +
             "<div class='price'>" + state.items[i].price + " руб</div>" +
             "<div class='description'>" + state.items[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
-
+            "<div class='cart'>В корзину</div>" +
             "</div>";
     }
 
