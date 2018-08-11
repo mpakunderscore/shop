@@ -22,7 +22,7 @@
     header {
 
         width: 100%;
-        margin: 60px;
+        /*margin: 60px;*/
         /*padding-left: 50px;*/
         /*overflow: hidden;*/
         overflow-y: auto;
@@ -66,6 +66,6 @@
         max-height: 140px;
     }
     #back {
-        height: 200px;
+        /*height: 200px;*/
     }
 }
