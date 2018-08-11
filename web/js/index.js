@@ -19,14 +19,21 @@ xhttp.send("JSON");
 
 function addItems(block) {
 
+    let items = "";
 
-    block.nextElementSibling.innerHTML =
-        "<div>" +
-        "<div class='images'><img src='" + state.items[0].images.split('\n')[0] + "'>" + "</div>" +
-        "<div class='name'>" + state.items[0].name + "</div>" +
-        "<div class='description'>" + state.items[0].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
-        "<div class='price'>" + state.items[0].price + "</div>" +
-        "</div>";
+    for (let i = 0; i < state.items.length; i++) {
+
+            items +=
+            "<div>" +
+            "<div class='images'><img src='" + state.items[i].images.split('\n')[0] + "'>" + "</div>" +
+            "<div class='name'>" + state.items[i].name + "</div>" +
+            "<div class='price'>" + state.items[i].price + " руб</div>" +
+            "<div class='description'>" + state.items[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
+
+            "</div>";
+    }
+
+    block.nextElementSibling.innerHTML = items;
 
     block.nextElementSibling.style.display = "block";
 }

@@ -75,7 +75,7 @@ a:hover {
 
 textarea, select, input, button { outline: none; }
 
-
+/*MENU*/
 header {
     display: flex;
     flex-direction: row;
@@ -96,7 +96,7 @@ header {
 
 header > div {
     padding: 20px;
-    border-top: 1px solid transparent;
+    border-top: 3px solid transparent;
     border-bottom: 1px solid transparent;
 }
 header > div:first-child {
@@ -109,14 +109,14 @@ header > div:last-child {
 header > div:hover {
     cursor: pointer;
     /*font-weight: 600;*/
-    border-top: 1px solid rgba(128, 128, 128, 0.49);
+    border-top: 3px solid rgba(128, 128, 128, 0.49);
     /*color: rgba(0, 0, 0, 0.9);*/
 
     /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
 }
 
 header > div.active {
-    border-top: 1px solid black;
+    border-top: 3px solid black;
 }
 
 #back {
@@ -143,6 +143,17 @@ main {
     display: none;
     margin-bottom: 50px;
     overflow: hidden;
+
+    padding: 20px;
+}
+
+.items > div {
+    /*height: 200px;*/
+    overflow: hidden;
+
+    margin-bottom: 20px !important;
+
+    /*background-color: red;*/
 }
 
 .items .images {
@@ -150,14 +161,19 @@ main {
     padding-left: 20px;
 }
 
+.items .images img {
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .items .name {
-    font-weight: 400;
-    padding-bottom: 10px;
+    font-weight: 700;
+    padding-bottom: 20px;
 }
 
 .items .price {
-    font-weight: 700;
-    padding-top: 10px;
+    font-weight: 400;
+    padding-bottom: 20px;
 }
 
 footer {

@@ -16,12 +16,12 @@ var sheet;
 
 doc.getInfo(function(err, info) {
 
-    console.log('Err: ' + err);
-    console.log('Doc author: ');
-    console.log(info.author.email);
-    console.log();
+    // console.log('Err: ' + err);
+    // console.log('Author: ');
+    // console.log(info.author.email);
+    // console.log();
 
-    sheet = info.worksheets[0];
+    sheet = info.worksheets[1];
 
     // console.log(sheet);
 
@@ -39,7 +39,7 @@ doc.getInfo(function(err, info) {
 
             let cell = cells[i];
 
-            if (cell.col > 5) {
+            if (cell.col > 6) {
                 continue;
             }
 
@@ -70,7 +70,11 @@ doc.getInfo(function(err, info) {
                 item.count = cell.value;
             }
 
-            console.log('Cell R' + cell.row + 'C' + cell.col + ' = ' + cell.value);
+            if (cell.col === 6) {
+                item.category = cell.value;
+            }
+
+            // console.log('Cell R' + cell.row + 'C' + cell.col + ' = ' + cell.value);
         }
     });
 });
