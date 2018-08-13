@@ -14,9 +14,10 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="css/index.css?v5">
+        <link rel="stylesheet" type="text/css" href="css/index.css?v6">
         <link rel="stylesheet" type="text/css" href="css/media.css?v5">
         <link rel="stylesheet" type="text/css" href="css/block.css?v4">
+        <link rel="stylesheet" type="text/css" href="css/items.css?v1">
 
         <link rel="stylesheet" type="text/css" href="css/utils/images.css">
 
@@ -61,7 +62,7 @@
 
         <header>
             <div class="active">Магазин</div>
-            <div>Доставка и оплата</div>
+            <div>Оплата и доставка</div>
             <div>Контакты</div>
             <!--<div>About</div>-->
             <div>Вопросы</div>
@@ -74,21 +75,21 @@
                 <img src="images/battery/stock-photo-ev-electric-vehicle-li-ion-battery-concept-close-up-view-d-rendering-744766768.jpg"  class="saturate">
             </div>
 
-            <div class="items">
-                <!--<div class="item">-->
-                    <!--TEST-->
-                <!--</div>-->
-            </div>
+            <div class="items"></div>
 
-            <div class="block" style="color: black">
+            <div class="block" style="color: black" onclick="addItems(this);">
                 <div class="text">Зарядные устройства</div>
                 <img src="images/battery/IMG_4015.jpg" class="saturate">
             </div>
 
-            <div class="block">
+            <div class="items"></div>
+
+            <div class="block" onclick="addItems(this);">
                 <div class="text">Элементы питания</div>
                 <img src="images/battery/Tesla-Batteries-18650-Li-ion-Cells_17fc3479-61b0-4a7b-a166-f865caccf048_grande.jpg">
             </div>
+
+            <div class="items"></div>
 
             <div class="block">
                 <div class="text">BMS платы и компоненты</div>

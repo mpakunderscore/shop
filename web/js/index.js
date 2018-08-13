@@ -6,7 +6,7 @@ xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
         state.items = JSON.parse(this.responseText);
-        console.log(state.items[0]);
+        // console.log(state.items[0]);
     }
 };
 
@@ -18,21 +18,35 @@ function addItems(block) {
 
     // console.log(block.innerHTML)
 
-    let items = "";
+    let title = block.childNodes[1].innerText.trim();
 
-    for (let i = 0; i < state.items.length; i++) {
+    let itemsHtml = "";
 
-            items +=
+    let itemsArray = state.items[title];
+
+    console.log(title);
+    console.log(state.items);
+    console.log(itemsArray);
+
+    let categories = Object.keys(itemsArray);
+
+    let categoriesHtml = "<div class='categories'>" + categories.join(' / ') + "</div>";
+
+    let firstCategory = itemsArray[categories[0]];
+
+    for (let i = 0; i < firstCategory.length; i++) {
+
+        itemsHtml +=
             "<div class='item'>" +
-            "<div class='images'><img src='" + state.items[i].images.split('\n')[0] + "'>" + "</div>" +
-            "<div class='name'>" + state.items[i].name + "</div>" +
-            "<div class='price'>" + state.items[i].price + " руб</div>" +
-            "<div class='description'>" + state.items[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
-            "<div class='cart'>В корзину</div>" +
+            "<div class='images'><img src='" + firstCategory[i].images.split('\n')[0] + "'>" + "</div>" +
+            "<div class='name'>" + firstCategory[i].name + "</div>" +
+            "<div class='price'>" + firstCategory[i].price + " руб</div>" +
+            "<div class='description'>" + firstCategory[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
+            "<div class='cart'>- В корзину + <div class='electrocontact'></div></div>" +
             "</div>";
     }
 
-    block.nextElementSibling.innerHTML = items;
+    block.nextElementSibling.innerHTML = categoriesHtml + itemsHtml;
 
     block.nextElementSibling.style.display = "block";
 }
