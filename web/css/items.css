@@ -16,11 +16,11 @@
 }
 
 .category {
-    background-color: lightgray;
+    background: rgba(46, 238, 53, 0.3);
 }
 
 .selectedCategory {
-    background-color: gray;
+    background: rgba(46, 238, 53, 0.8);
     /*border: 3px solid black !important;*/
 }
 
@@ -41,7 +41,7 @@
 
     margin-bottom: 20px !important;
 
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid lightgray;
 
     /*background-color: red;*/
 }
@@ -71,7 +71,7 @@
 
 .items .cart {
     position: relative;
-    padding: 20px;
+    padding: 17px;
     margin: 20px 0;
     font-weight: 700;
     width: 120px;
@@ -93,12 +93,12 @@
 
 .items .electrocontact {
     position: absolute;
-    right: -10px;
-    top: 15px;
-    bottom: 15px;
+    right: -7px;
+    top: 13px;
+    bottom: 13px;
 
     background-color: gray;
-    width: 10px;
+    width: 7px;
     /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);*/
     /*height: 10px;*/
 
