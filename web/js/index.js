@@ -16,37 +16,81 @@ xhttp.send("JSON");
 
 function addItems(block) {
 
-    // console.log(block.innerHTML)
-
     let title = block.childNodes[1].innerText.trim();
 
     let itemsHtml = "";
 
     let itemsArray = state.items[title];
 
-    console.log(title);
-    console.log(state.items);
-    console.log(itemsArray);
+    let categories = Object.keys(itemsArray);
+
+    let selectedCategory = itemsArray[categories[0]];
+
+    itemsHtml = buildItems(block, selectedCategory);
+
+    let categoriesHtml = "<div class='categories'>";
+    for (let i = 0; i < categories.length; i++) {
+
+        // console.log(category.innerText)
+        // console.log(category.innerText)
+
+        categoriesHtml += ("<div class='" + (i !== 0 ? 'category' : 'selectedCategory') + "' onclick='addItemsFromCategory(this)'>" + categories[i] + "</div>");
+    }
+    categoriesHtml += "</div>";
+
+    block.nextElementSibling.innerHTML = categoriesHtml + itemsHtml;
+
+    block.nextElementSibling.style.display = "flex";
+}
+
+function addItemsFromCategory(category) {
+
+    console.log(category.innerText)
+
+    //TODO
+    let block = category.parentNode.parentNode.previousSibling.previousSibling;
+    let title = block.childNodes[1].innerText.trim();
+
+    let itemsHtml = "";
+
+    let itemsArray = state.items[title];
 
     let categories = Object.keys(itemsArray);
 
-    let categoriesHtml = "<div class='categories'>" + categories.join(' / ') + "</div>";
+    let selectedCategory = itemsArray[category.innerText];
 
-    let firstCategory = itemsArray[categories[0]];
+    itemsHtml = buildItems(block, selectedCategory);
 
-    for (let i = 0; i < firstCategory.length; i++) {
+    let categoriesHtml = "<div class='categories'>";
+    for (let i = 0; i < categories.length; i++) {
+
+        // console.log(category.innerText)
+        // console.log(category.innerText)
+
+        categoriesHtml += ("<div class='" + (categories[i] !== category.innerText ? 'category' : 'selectedCategory') + "' onclick='addItemsFromCategory(this)'>" + categories[i] + "</div>");
+    }
+    categoriesHtml += "</div>";
+
+    block.nextElementSibling.innerHTML = categoriesHtml + itemsHtml;
+
+    block.nextElementSibling.style.display = "flex";
+}
+
+function buildItems(block, category) {
+
+    let itemsHtml = "";
+
+    for (let i = 0; i < category.length; i++) {
 
         itemsHtml +=
             "<div class='item'>" +
-            "<div class='images'><img src='" + firstCategory[i].images.split('\n')[0] + "'>" + "</div>" +
-            "<div class='name'>" + firstCategory[i].name + "</div>" +
-            "<div class='price'>" + firstCategory[i].price + " руб</div>" +
-            "<div class='description'>" + firstCategory[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
+            "<div class='images'><img src='" + category[i].images.split('\n')[0] + "'>" + "</div>" +
+            "<div class='name'>" + category[i].name + "</div>" +
+            "<div class='price'>" + category[i].price + " руб</div>" +
+            "<div class='description'>" + category[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
             "<div class='cart'>- В корзину + <div class='electrocontact'></div></div>" +
             "</div>";
     }
 
-    block.nextElementSibling.innerHTML = categoriesHtml + itemsHtml;
-
-    block.nextElementSibling.style.display = "block";
+    return itemsHtml;
 }

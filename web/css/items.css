@@ -1,14 +1,38 @@
 .categories {
     font-size: 20px;
     padding-bottom: 20px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.categories div {
+    margin-right: 20px;
+    padding: 10px;
+    cursor: pointer;
+
+
+    /*border: 3px solid rgb(177, 177, 177);*/
+}
+
+.category {
+    background-color: lightgray;
+}
+
+.selectedCategory {
+    background-color: gray;
+    /*border: 3px solid black !important;*/
 }
 
 .items {
     display: none;
+    flex-direction: column;
     /*margin-bottom: 50px;*/
     overflow: hidden;
 
     padding: 20px;
+
+    box-sizing: border-box;
 }
 
 .items > div {
