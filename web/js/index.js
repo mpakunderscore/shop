@@ -88,7 +88,7 @@ function buildItems(block, category) {
             "<div class='name'>" + category[i].name + "</div>" +
             "<div class='price'>" + category[i].price + " руб</div>" +
             "<div class='description'>" + category[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
-            "<div class='cart'>В корзину<div class='electrocontact'></div></div>" +
+            "<div class='cart'><div class='cartBack'></div><span>В корзину</span><div class='electrocontact'></div></div>" +
             "</div>";
     }
 
