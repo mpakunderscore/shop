@@ -55,7 +55,8 @@
 .items .images {
     float: right;
     padding-left: 20px;
-    width: 30%;
+    width: 40%;
+    padding-bottom: 20px;
 }
 
 .items .images img {
