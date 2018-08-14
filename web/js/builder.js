@@ -1,18 +1,6 @@
 function includeHTML(name) {
 
-    let menu = document.getElementsByTagName('header')[0].getElementsByTagName('div');
-
-    for (let i = 0; i < menu.length; i++) {
-
-        if (menu[i] && menu[i].classList)
-            menu[i].classList.remove('active');
-
-        if (menu[i] && menu[i].getAttribute('onclick') === "includeHTML('"+ name +"')")
-            menu[i].classList.add('active');
-    }
-
-    // console.log([1].classList.remove('active'));
-    // console.log(document.getElementsByTagName('header')[0].childNodes[3].classList.add('active'));
+    selectMenu(name);
 
     console.log('includeHTML: ' + name);
 
@@ -44,10 +32,25 @@ function includeHTML(name) {
     /*exit the function:*/
 }
 
+function selectMenu(name) {
+
+    let menu = Array.prototype.slice.apply(document.getElementsByTagName('header')[0].getElementsByTagName('div'));
+    menu = menu.concat(Array.prototype.slice.apply(document.getElementById('top').getElementsByTagName('div')))
+
+    for (let i = 0; i < menu.length; i++) {
+
+        if (menu[i] && menu[i].classList)
+            menu[i].classList.remove('active');
+
+        if (menu[i] && menu[i].getAttribute('onclick') === "includeHTML('"+ name +"')")
+            menu[i].classList.add('active');
+    }
+}
+
 window.onpopstate = function(e) {
 
     if (e.state){
         document.getElementsByTagName("main")[0].innerHTML = e.state.html;
-        document.title = e.state.pageTitle;
+        // document.title = e.state.pageTitle;
     }
 };

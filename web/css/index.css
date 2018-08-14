@@ -92,6 +92,10 @@ a:hover {
     /*background-color: red;*/
 }
 
+#top #cart.active img {
+    filter: invert(100%);
+}
+
 #search {
     width: 50%;
 }
