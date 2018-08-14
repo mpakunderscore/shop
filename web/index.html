@@ -24,6 +24,7 @@
         <!--<script src="./js/utils/socket.io.slim.js"></script>-->
 
         <script src="js/index.js"></script>
+        <script src="js/builder.js"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40320768-9"></script>
@@ -47,7 +48,7 @@
 
         <div id="back">
 
-            <div id="title" style="padding-top: 50px; font-size: 48px; text-transform: uppercase;">Electric battery</div>
+            <div id="title" style="padding-top: 50px; font-size: 48px; text-transform: uppercase;">batteries today</div>
 
             <div id="top">
                 <div>
@@ -69,81 +70,15 @@
         </div>
 
         <header>
-            <div class="active">Магазин</div>
-            <div>Оплата и доставка</div>
-            <div>Контакты</div>
+            <div onclick="includeHTML('shop')" class="active">Магазин</div>
+            <div onclick="includeHTML('delivery')">Оплата и доставка</div>
+            <div onclick="includeHTML('contacts')">Контакты</div>
             <!--<div>About</div>-->
-            <div>Вопросы</div>
+            <div onclick="includeHTML('questions')">Вопросы</div>
         </header>
 
         <main>
-
-            <div class="block" onclick="addItems(this);">
-                <div class="text">Готовые аккумуляторы</div>
-                <img src="images/battery/stock-photo-ev-electric-vehicle-li-ion-battery-concept-close-up-view-d-rendering-744766768.jpg"  class="saturate">
-            </div>
-
-            <div class="items"></div>
-
-            <div class="block" style="color: black" onclick="addItems(this);">
-                <div class="text">Зарядные устройства</div>
-                <!--<img src="images/battery/IMG_4015.jpg" class="saturate">-->
-            </div>
-
-            <div class="items"></div>
-
-            <div class="block" onclick="addItems(this);">
-                <div class="text">Элементы питания</div>
-                <img src="images/battery/Tesla-Batteries-18650-Li-ion-Cells_17fc3479-61b0-4a7b-a166-f865caccf048_grande.jpg">
-            </div>
-
-            <div class="items"></div>
-
-            <div class="block" onclick="addItems(this);">
-                <div class="text">BMS платы и компоненты</div>
-                <img src="images/bms.jpg" class="saturate">
-            </div>
-
-            <div class="items"></div>
-
-            <div class="block" style="height: 200px" onclick="addItems(this);">
-                <div class="text">
-                    Комплектующие для электротранспорта
-                </div>
-                <div class="text bottom">
-                    Моторы<br/>
-                    Комплекты для электрофикации<br/>
-                    Контроллеры<br/>
-                    Прочее оснащение<br/>
-                </div>
-
-                <!--<img src="images/Electric%20Motors_01_TESLA%20Institute.jpg" class="saturate">-->
-            </div>
-
-            <div class="items"></div>
-
-            <div class="block" style="height: 440px" onclick="addItems(this);">
-                <div class="text">
-                    Электротранспорт
-                </div>
-                <div class="text bottom">
-                    Электровелосипеды<br/>
-                    Электросамокаты<br/>
-                    Электроскейты
-                </div>
-
-                <!--<img src="images/transport/xiaomi-s.jpg" class="saturate">-->
-            </div>
-
-            <div class="items"></div>
-
-            <div class="block" onclick="addItems(this);">
-                <div class="text">Товары со скидкой</div>
-                <!--<img src="images/w.png" class="contrast">-->
-            </div>
-
-            <div class="items"></div>
-
+            <div include-html></div>
         </main>
 
         <footer>
@@ -190,5 +125,9 @@
         <img src="images/preview.png" style="width: 100px; padding-top: 100px">
 
     </body>
+
+    <script>
+        includeHTML('shop');
+    </script>
 
 </html>

@@ -94,3 +94,7 @@ function buildItems(block, category) {
 
     return itemsHtml;
 }
+
+function showMain() {
+
+}

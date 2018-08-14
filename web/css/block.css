@@ -23,13 +23,21 @@
 
 }
 
-.block .text {
+.block.relative {
+    height: auto;
+}
+
+.block .title {
     font-size: var(--font-size-big);
     position: absolute;
     padding: 20px;
     z-index: 1;
 
     /*background-color: lightgreen;*/
+}
+
+.block.relative .title {
+    position: relative;
 }
 
 .block .bottom {
@@ -44,6 +52,15 @@
 
     /*background-color: lightgreen;*/
 
+}
+
+.block .text {
+    font-size: var(--font-size);
+    /*position: absolute;*/
+    padding: 20px;
+    z-index: 1;
+
+    /*background-color: lightgreen;*/
 }
 
 .block img {

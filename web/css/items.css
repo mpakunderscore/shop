@@ -16,17 +16,17 @@
 }
 
 .category {
-    background: rgba(46, 238, 53, 0.2);
+    background: rgba(0, 212, 255, 0.3);
     transition: background 1s;
 }
 
 .category:hover {
-    background: rgba(46, 238, 53, 0.4);
+    background: rgba(46, 238, 53, 0.1);
 
 }
 
 .selectedCategory {
-    background: rgba(46, 238, 53, 0.8);
+    background: rgba(46, 238, 53, 0.3);
     /*border: 3px solid black !important;*/
 }
 
@@ -83,7 +83,7 @@
     font-weight: 700;
     width: 120px;
     /*background-color: white;*/
-    background: rgba(46, 238, 53, 0.1);
+    background: rgba(0, 212, 255, 0.3);
     border: 1px solid gray;
 
     /*margin: 10px;*/
