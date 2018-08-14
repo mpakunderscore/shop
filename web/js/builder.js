@@ -26,7 +26,13 @@ function includeHTML(name) {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
-            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 200) {
+
+                elmnt.innerHTML = this.responseText;
+
+                // document.title = name.toUpperCase();
+                window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/");
+            }
             if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
             /*remove the attribute, and call this function once more:*/
             // elmnt.removeAttribute("include-html");
@@ -37,3 +43,11 @@ function includeHTML(name) {
     xhttp.send();
     /*exit the function:*/
 }
+
+window.onpopstate = function(e) {
+
+    if (e.state){
+        document.getElementsByTagName("main")[0].innerHTML = e.state.html;
+        document.title = e.state.pageTitle;
+    }
+};

@@ -11,6 +11,12 @@ state.items = [];
 //STATIC WEB
 app.use(express.static(path.join(__dirname, 'web')));
 
+app.use('/shop', express.static(path.join(__dirname, 'web')));
+app.use('/delivery', express.static(path.join(__dirname, 'web')));
+app.use('/contacts', express.static(path.join(__dirname, 'web')));
+app.use('/questions', express.static(path.join(__dirname, 'web')));
+
+
 let server = require('http').Server(app);
 
 const port = process.env.PORT || 8080;
