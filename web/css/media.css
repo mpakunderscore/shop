@@ -55,10 +55,10 @@
     }
 
     .block {
-        max-height: 140px;
+        /*max-height: 140px;*/
     }
     .block.relative {
-        max-height: none;
+        /*max-height: none;*/
     }
     #back {
         /*height: 200px;*/

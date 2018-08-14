@@ -19,7 +19,7 @@ function includeHTML(name) {
                 elmnt.innerHTML = this.responseText;
 
                 // document.title = name.toUpperCase();
-                window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/");
+                window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "#" + name);
             }
             if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
             /*remove the attribute, and call this function once more:*/

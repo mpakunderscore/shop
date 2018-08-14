@@ -96,6 +96,14 @@ a:hover {
     filter: invert(100%);
 }
 
+#phone {
+    cursor: pointer;
+}
+
+#phone:hover {
+    color: white;
+}
+
 #search {
     width: 50%;
 }
