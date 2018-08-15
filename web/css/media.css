@@ -2,6 +2,10 @@
     #contacts {
         display: none !important;
     }
+    .menu {
+        font-size: 16px !important;
+    }
+
 }
 
 @media only screen and (max-width : 640px) {
@@ -42,6 +46,9 @@
         /*padding-right: 15px;*/
         /*padding-bottom: 0;*/
     }
+    .menu div:hover, .menu div:active {
+        background-color: rgba(211, 211, 211, 0.05);
+    }
     .menu div:first-child {
         padding-left: 0;
     }
@@ -66,7 +73,7 @@
 }
 
 @media only screen and (max-width : 800px) {
-    header {
+    #top {
         border-radius: 0 !important;
     }
     .block {

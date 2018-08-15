@@ -24,7 +24,7 @@ function includeHTML(name) {
                 // document.title = name.toUpperCase();
                 // let url = (name === "shop" ? "" : name);
 
-                console.log(name)
+                // console.log(name)
 
                 if (!path.startsWith("/" + name) && name !== 'shop')
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name.replace('/', ''));
@@ -45,7 +45,6 @@ function includeHTML(name) {
     /*exit the function:*/
 }
 
-// console.log(path.replace('/', '').replace('/', ''));
 if (path === '/')
     path = 'shop';
 else

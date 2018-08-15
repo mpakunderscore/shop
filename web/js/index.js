@@ -26,7 +26,7 @@ function addItems(block) {
 
     let selectedCategory = itemsArray[categories[0]];
 
-    itemsHtml = buildItems(block, selectedCategory);
+    itemsHtml = buildItemsHtml(block, selectedCategory);
 
     let categoriesHtml = "<div class='categories'>";
     for (let i = 0; i < categories.length; i++) {
@@ -59,7 +59,7 @@ function addItemsFromCategory(category) {
 
     let selectedCategory = itemsArray[category.innerText];
 
-    itemsHtml = buildItems(block, selectedCategory);
+    itemsHtml = buildItemsHtml(block, selectedCategory);
 
     let categoriesHtml = "<div class='categories'>";
     for (let i = 0; i < categories.length; i++) {
@@ -76,7 +76,7 @@ function addItemsFromCategory(category) {
     block.nextElementSibling.style.display = "flex";
 }
 
-function buildItems(block, category) {
+function buildItemsHtml(block, category) {
 
     let itemsHtml = "";
 
