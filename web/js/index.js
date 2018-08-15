@@ -14,11 +14,14 @@ xhttp.open("GET", "/items", true);
 xhttp.setRequestHeader("Content-type", "application/json");
 xhttp.send("JSON");
 
+
 function addItems(block) {
 
     let title = block.childNodes[1].innerText.trim();
 
     let itemsHtml = "";
+
+    console.log(state);
 
     let itemsArray = state.items[title];
 
@@ -45,7 +48,7 @@ function addItems(block) {
 
 function addItemsFromCategory(category) {
 
-    console.log(category.innerText)
+    console.log(category.innerText);
 
     //TODO
     let block = category.parentNode.parentNode.previousSibling.previousSibling;
@@ -86,8 +89,8 @@ function buildItemsHtml(block, category) {
             "<div class='item'>" +
             "<div class='images'><img src='" + category[i].images.split('\n')[0] + "'>" + "</div>" +
             "<div class='name'>" + category[i].name + "</div>" +
-            "<div class='price'>" + category[i].price + " руб</div>" +
             "<div class='description'>" + category[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
+            "<div class='price'>" + category[i].price + " руб</div>" +
             "<div class='cart'><div class='cartBack'></div><span>В корзину</span><div class='electrocontact'></div></div>" +
             "</div>";
     }

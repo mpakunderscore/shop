@@ -1,13 +1,22 @@
 .categories {
-    font-size: 20px;
-    padding-bottom: 20px;
+
+    position: absolute;
+    /*right: 0;*/
+    width: 100px;
+    left: -100px;
+
+    font-size: var(--font-size);
+    text-align: right;
+    /*padding-bottom: 20px;*/
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .categories div {
+    /*margin: 10px;*/
     margin-right: 20px;
+    margin-bottom: 10px;
     padding: 10px;
     cursor: pointer;
 
@@ -31,17 +40,18 @@
 }
 
 .items {
+    position: relative;
     display: none;
     flex-direction: column;
     /*margin-bottom: 50px;*/
-    overflow: hidden;
+    /*overflow: hidden;*/
 
     padding: 20px;
 
     box-sizing: border-box;
 }
 
-.items > div {
+.items > div.item {
     /*height: 200px;*/
     overflow: hidden;
 
@@ -68,12 +78,16 @@
 
 .items .name {
     font-weight: 700;
+    font-size: var(--font-size-big);
     padding-bottom: 20px;
 }
 
 .items .price {
-    font-weight: 400;
-    padding-bottom: 20px;
+    font-weight: 700;
+
+    font-size: var(--font-size-big);
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .items .cart {

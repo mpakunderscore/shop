@@ -83,4 +83,15 @@
     .block {
         border-radius: 0 !important;
     }
+
+    .categories {
+        position: relative;
+        flex-direction: row;
+        padding-bottom: 20px;
+        left: 0;
+        width: auto;
+    }
+    .categories div {
+        margin-right: 20px;
+    }
 }

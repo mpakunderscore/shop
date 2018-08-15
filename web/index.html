@@ -13,14 +13,14 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="css/index.css?v9">
-        <link rel="stylesheet" type="text/css" href="css/block.css?v6">
-        <link rel="stylesheet" type="text/css" href="css/items.css?v4">
-        <link rel="stylesheet" type="text/css" href="css/media.css?v9">
+        <link rel="stylesheet" type="text/css" href="/css/index.css?v9">
+        <link rel="stylesheet" type="text/css" href="/css/block.css?v6">
+        <link rel="stylesheet" type="text/css" href="/css/items.css?v4">
+        <link rel="stylesheet" type="text/css" href="/css/media.css?v9">
 
-        <link rel="stylesheet" type="text/css" href="css/utils/images.css?v1">
+        <link rel="stylesheet" type="text/css" href="/css/utils/images.css?v1">
 
-        <script src="js/index.js?v1"></script>
+        <script src="/js/index.js?v1"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40320768-9"></script>
@@ -42,7 +42,7 @@
 
             <div id="top">
                 <div>
-                    <a href="/"><img src="images/preview.png" style="height: 50px"></a>
+                    <a href="/"><img src="/images/preview.png" style="height: 50px"></a>
                 </div>
                 <div id="contacts">
                     <div>г. Санкт-Петербург</div>
@@ -53,15 +53,16 @@
                     <input type="text" placeholder="Поиск"/>
                 </div>
                 <div id="cart" onclick="includeHTML('cart')">
-                    <img src="images/shopping-01-512.png" style="height: 50px">
+                    <img src="/images/shopping-01-512.png" style="height: 50px">
                 </div>
             </div>
 
-            <div class="menu">
+            <div class="menu system">
                 <!--<div onclick="includeHTML('about')">О нас</div>-->
-                <div onclick="includeHTML('orders')">Заказы</div>
-                <div onclick="includeHTML('store')">Склад</div>
-                <div onclick="includeHTML('stat')">Статистика</div>
+                <!--<div onclick="includeHTML('orders')">Заказы</div>-->
+                <div onclick="includeHTML('texts')">Статьи</div>
+                <div onclick="includeHTML('enter')">Вход</div>
+                <!--<div onclick="includeHTML('stat')">Статистика</div>-->
             </div>
 
         </div>
@@ -81,24 +82,24 @@
                 ИНН 000<br/>
                 ОГРНИП 000<br/>
                 © 2006–2018, Electrotransport<br/>
-                info@electrotransport.club
+                <a href="/">info@electrotransport.club</a>
             </div>
 
             <div>
                 МЕНЮ<br/>
-                Поиск<br/>
-                Магазин<br/>
-                Доставка и оплата<br/>
-                Контакты<br/>
-                Вопросы<br/>
-                Корзина<br/>
+                <a href="/search">Поиск</a><br/>
+                <a href="/">Магазин</a><br/>
+                <a href="/delivery">Доставка и оплата</a><br/>
+                <a href="/contacts">Контакты</a><br/>
+                <a href="/questions">Вопросы</a><br/>
+                <a href="/cart">Корзина</a><br/>
             </div>
 
             <div>
                 КАТАЛОГ<br/>
                 Готовые аккумуляторы<br/>
                 Зарядные устройства<br/>
-                Элементы питания<br/>
+                <a href="/shop/cell">Элементы питания</a><br/>
                 BMS платы и компоненты<br/>
                 Комплектующие для электротранспорта<br/>
                 Электротранспорт<br/>
@@ -116,11 +117,11 @@
 
         </footer>
 
-        <img src="images/preview.png" style="width: 100px; padding-top: 100px">
+        <img src="/images/preview.png" style="width: 100px; padding-top: 100px">
 
     </body>
 
-    <script src="js/builder.js?v1"></script>
-    <script src="js/robot.js?v1"></script>
+    <script src="/js/builder.js?v1"></script>
+    <script src="/js/robot.js?v1"></script>
 
 </html>

@@ -26,14 +26,17 @@ function includeHTML(name) {
 
                 // console.log(name)
 
-                if (!path.startsWith("/" + name) && name !== 'shop')
+                if (name.startsWith('shop/')) {
+                    window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name);
+                } else if (!path.startsWith("/" + name) && name !== 'shop') {
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name.replace('/', ''));
-
-                else if (name === 'shop') {
+                } else if (name === 'shop') {
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/");
                 }
             }
-            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            if (this.status == 404) {
+                elmnt.innerHTML = "<div class='block'><div class='title'>Page not found</div></div>";
+            }
             /*remove the attribute, and call this function once more:*/
             // elmnt.removeAttribute("include-html");
             // includeHTML(name);
@@ -48,7 +51,7 @@ function includeHTML(name) {
 if (path === '/')
     path = 'shop';
 else
-    path = path.replace('/', '').replace('/', '');
+    path = path.substring(0, path.length - 1).replace('/', '');
 
 includeHTML(path);
 
@@ -63,7 +66,7 @@ function selectMenu(name) {
         if (menu[i] && menu[i].classList)
             menu[i].classList.remove('active');
 
-        if (menu[i] && menu[i].getAttribute('onclick') === "includeHTML('"+ name +"')")
+        if (menu[i] && menu[i].hasAttribute('onclick') && name.startsWith(menu[i].getAttribute('onclick').replace("includeHTML('", "").replace("')", "")))
             menu[i].classList.add('active');
     }
 }

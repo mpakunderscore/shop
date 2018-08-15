@@ -11,15 +11,22 @@ state.items = [];
 //STATIC WEB
 app.use(express.static(path.join(__dirname, 'web')));
 
-// app.use('/shop', express.static(path.join(__dirname, 'web/index.html')));
+// app.use('/shop', express.static(path.join(__dirname, 'web')));
+app.use('/shop/:category', express.static(path.join(__dirname, 'web')));
 app.use('/contacts', express.static(path.join(__dirname, 'web')));
 app.use('/questions', express.static(path.join(__dirname, 'web')));
 app.use('/delivery', express.static(path.join(__dirname, 'web')));
+
+app.use('/cart', express.static(path.join(__dirname, 'web')));
+
 app.use('/stat', express.static(path.join(__dirname, 'web')));
 app.use('/store', express.static(path.join(__dirname, 'web')));
 app.use('/orders', express.static(path.join(__dirname, 'web')));
 
-app.use('/cart', express.static(path.join(__dirname, 'web')));
+// app.use('/batteries', express.static(path.join(__dirname, 'web')));
+// app.use('/cell', express.static(path.join(__dirname, 'web')));
+
+
 
 
 
