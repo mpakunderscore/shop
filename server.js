@@ -19,6 +19,8 @@ app.use('/stat', express.static(path.join(__dirname, 'web')));
 app.use('/store', express.static(path.join(__dirname, 'web')));
 app.use('/orders', express.static(path.join(__dirname, 'web')));
 
+app.use('/cart', express.static(path.join(__dirname, 'web')));
+
 
 
 let server = require('http').Server(app);
