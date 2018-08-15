@@ -25,7 +25,9 @@ html, body {
 
     font-weight: 300;
 
+    --font-size-small: 12px;
     --font-size: 16px;
+    --font-size-big-mobile: 20px;
     --font-size-big: 26px;
     font-size: var(--font-size);
     /*letter-spacing: 1px;*/
@@ -53,6 +55,12 @@ a:hover {
     color: rgba(20, 137, 181, 0.76);
 }
 
+#title {
+    font-size: 48px;
+    padding-top: 50px;
+    text-transform: uppercase;
+}
+
 #top {
     display: flex;
     flex-direction: row;
@@ -63,7 +71,7 @@ a:hover {
     margin-top: 50px;
     /*margin-bottom: 50px;*/
 
-    font-size: 16px;
+    font-size: var(--font-size);
     width: 100%;
     max-width: 800px;
 
@@ -211,7 +219,7 @@ footer {
     width: 100%;
     max-width: 800px;
 
-    font-size: 12px;
+    font-size: var(--font-size-small);
     line-height: 150%;
     /*padding: 20px;*/
 }
