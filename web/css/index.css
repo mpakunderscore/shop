@@ -61,7 +61,7 @@ a:hover {
     box-sizing: border-box;
 
     margin-top: 50px;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 
     font-size: 16px;
     width: 100%;
@@ -118,8 +118,22 @@ a:hover {
 
 textarea, select, input, button { outline: none; }
 
+#back .menu {
+    margin-bottom: 0;
+}
+
+#back .menu > div:hover {
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.5);
+}
+
+#back .menu > div.active {
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid black;
+}
+
 /*MENU*/
-header {
+.menu {
     display: flex;
     flex-direction: row;
     margin: 50px;
@@ -138,28 +152,28 @@ header {
     /*box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);*/
 }
 
-header > div {
+.menu > div {
     padding: 20px;
     border-top: 3px solid transparent;
-    border-bottom: 1px solid transparent;
+    border-bottom: 3px solid transparent;
 }
-header > div:first-child {
+.menu > div:first-child {
     padding-left: 40px;
 }
-header > div:last-child {
+.menu > div:last-child {
     padding-right: 40px;
 }
 
-header > div:hover {
+.menu > div:hover {
     cursor: pointer;
     /*font-weight: 600;*/
-    border-top: 3px solid rgba(128, 128, 128, 0.49);
+    border-top: 3px solid rgba(128, 128, 128, 0.5);
     /*color: rgba(0, 0, 0, 0.9);*/
 
     /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
 }
 
-header > div.active {
+.menu > div.active {
     border-top: 3px solid black;
 }
 

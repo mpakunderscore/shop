@@ -1,7 +1,10 @@
+let path = window.location.href.toString().split(window.location.host)[1];
+
 function includeHTML(name) {
 
     selectMenu(name);
 
+    console.log('path: ' + path);
     console.log('includeHTML: ' + name);
 
     var main, i, elmnt, file, xhttp;
@@ -19,7 +22,16 @@ function includeHTML(name) {
                 elmnt.innerHTML = this.responseText;
 
                 // document.title = name.toUpperCase();
-                window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "#" + name);
+                // let url = (name === "shop" ? "" : name);
+
+                console.log(name)
+
+                if (!path.startsWith("/" + name) && name !== 'shop')
+                    window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name.replace('/', ''));
+
+                else if (name === 'shop') {
+                    window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/");
+                }
             }
             if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
             /*remove the attribute, and call this function once more:*/
@@ -28,13 +40,23 @@ function includeHTML(name) {
         }
     };
     xhttp.open("GET", '/html/' + name + '.html', true);
+    // .substring(0, name.length -1)
     xhttp.send();
     /*exit the function:*/
 }
 
+// console.log(path.replace('/', '').replace('/', ''));
+if (path === '/')
+    path = 'shop';
+else
+    path = path.replace('/', '').replace('/', '');
+
+includeHTML(path);
+
 function selectMenu(name) {
 
-    let menu = Array.prototype.slice.apply(document.getElementsByTagName('header')[0].getElementsByTagName('div'));
+    let menu = Array.prototype.slice.apply(document.getElementsByClassName('menu')[0].getElementsByTagName('div'));
+    menu = menu.concat(Array.prototype.slice.apply(document.getElementsByClassName('menu')[1].getElementsByTagName('div')))
     menu = menu.concat(Array.prototype.slice.apply(document.getElementById('top').getElementsByTagName('div')))
 
     for (let i = 0; i < menu.length; i++) {

@@ -19,7 +19,7 @@
     #top #search {
         display: none;
     }
-    header {
+    .menu {
 
         width: 100%;
         margin: 0;
@@ -32,7 +32,7 @@
         font-size: 20px;
         justify-content: space-between;
     }
-    header div {
+    .menu div {
         display: flex;
         flex-direction: column;
 
@@ -42,10 +42,10 @@
         /*padding-right: 15px;*/
         /*padding-bottom: 0;*/
     }
-    header div:first-child {
+    .menu div:first-child {
         padding-left: 0;
     }
-    header div:last-child {
+    .menu div:last-child {
         padding-right: 0;
     }
 
