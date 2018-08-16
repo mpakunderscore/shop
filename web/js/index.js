@@ -1,15 +1,23 @@
 let state = {};
+// state.cart = [];
 
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         state.items = JSON.parse(this.responseText);
+        state.items['Корзина'] = {};
+        state.items['Корзина']['Все'] = [];
+        state.items['Корзина']['Все'].push({name: "Test", images: "", description: ""});
     }
 };
 
 xhttp.open("GET", "/items", true);
 xhttp.setRequestHeader("Content-type", "application/json");
 xhttp.send("JSON");
+
+function addItemsFromCart(id) {
+
+}
 
 function addItemsById(id) {
 
@@ -29,40 +37,13 @@ function addItemsById(id) {
 
     let itemsArray = state.items[title];
 
-    let categories = Object.keys(itemsArray);
-
-    let selectedCategory = itemsArray[categories[0]];
-
-    itemsHtml = buildItemsHtml(block, selectedCategory);
-
-    let categoriesHtml = "<div class='categories'>";
-    for (let i = 0; i < categories.length; i++) {
-
-        // console.log(category.innerText)
-        // console.log(category.innerText)
-
-        categoriesHtml += ("<div class='" + (i !== 0 ? 'category' : 'selectedCategory') + "' onclick='addItemsFromCategory(this)'>" + categories[i] + "</div>");
-    }
-    categoriesHtml += "</div>";
-
-    //TODO here render
-    block.nextElementSibling.innerHTML = categoriesHtml + itemsHtml;
-    block.nextElementSibling.style.display = "flex";
-}
-
-function addItems(block) {
-
-    let title = block.childNodes[1].innerText.trim();
-
-    let itemsHtml = "";
-
-    console.log(state);
-
-    let itemsArray = state.items[title];
+    console.log(title)
 
     let categories = Object.keys(itemsArray);
 
     let selectedCategory = itemsArray[categories[0]];
+
+    // console.log(categories)
 
     itemsHtml = buildItemsHtml(block, selectedCategory);
 
@@ -115,6 +96,8 @@ function addItemsFromCategory(category) {
 }
 
 function buildItemsHtml(block, category) {
+
+    console.log(category)
 
     let itemsHtml = "";
 

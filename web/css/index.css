@@ -94,13 +94,13 @@ a:hover {
     line-height: 24px;
 }
 
-#top #cart img:hover {
+#top #cart-icon img:hover {
     filter: invert(100%);
     cursor: pointer;
     /*background-color: red;*/
 }
 
-#top #cart.active img {
+#top #cart-icon.active img {
     filter: invert(100%);
 }
 

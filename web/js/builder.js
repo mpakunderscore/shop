@@ -23,6 +23,9 @@ function includeHTML(name) {
                 if (name.startsWith("shop/"))
                     addItemsById(name);
 
+                if (name.startsWith("cart"))
+                    addItemsById(name);
+
                 if (name.startsWith('shop/')) {
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name);
                 } else if (!path.startsWith("/" + name) && name !== 'shop') {
