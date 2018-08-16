@@ -2,11 +2,8 @@ let state = {};
 
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
-
     if (this.readyState == 4 && this.status == 200) {
-
         state.items = JSON.parse(this.responseText);
-        // console.log(state.items[0]);
     }
 };
 
@@ -14,6 +11,44 @@ xhttp.open("GET", "/items", true);
 xhttp.setRequestHeader("Content-type", "application/json");
 xhttp.send("JSON");
 
+function addItemsById(id) {
+
+    // console.log(id);
+
+    let block = document.getElementById(id);
+
+    // console.log(block);
+
+    let title = block.childNodes[1].innerText.trim();
+
+    // console.log('addItemsById: ' + id)
+    // console.log(state);
+    let itemsHtml = "";
+
+    // console.log(state);
+
+    let itemsArray = state.items[title];
+
+    let categories = Object.keys(itemsArray);
+
+    let selectedCategory = itemsArray[categories[0]];
+
+    itemsHtml = buildItemsHtml(block, selectedCategory);
+
+    let categoriesHtml = "<div class='categories'>";
+    for (let i = 0; i < categories.length; i++) {
+
+        // console.log(category.innerText)
+        // console.log(category.innerText)
+
+        categoriesHtml += ("<div class='" + (i !== 0 ? 'category' : 'selectedCategory') + "' onclick='addItemsFromCategory(this)'>" + categories[i] + "</div>");
+    }
+    categoriesHtml += "</div>";
+
+    //TODO here render
+    block.nextElementSibling.innerHTML = categoriesHtml + itemsHtml;
+    block.nextElementSibling.style.display = "flex";
+}
 
 function addItems(block) {
 
@@ -41,8 +76,8 @@ function addItems(block) {
     }
     categoriesHtml += "</div>";
 
+    //TODO here render
     block.nextElementSibling.innerHTML = categoriesHtml + itemsHtml;
-
     block.nextElementSibling.style.display = "flex";
 }
 

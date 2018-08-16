@@ -20,11 +20,8 @@ function includeHTML(name) {
             if (this.status == 200) {
 
                 elmnt.innerHTML = this.responseText;
-
-                // document.title = name.toUpperCase();
-                // let url = (name === "shop" ? "" : name);
-
-                // console.log(name)
+                if (name.startsWith("shop/"))
+                    addItemsById(name);
 
                 if (name.startsWith('shop/')) {
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name);

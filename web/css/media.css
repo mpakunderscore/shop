@@ -74,6 +74,13 @@
     #back {
         /*height: 200px;*/
     }
+
+    .items .name {
+        font-size: var(--font-size-big-mobile);
+    }
+    .items .price {
+        font-size: var(--font-size-big-mobile);
+    }
 }
 
 @media only screen and (max-width : 800px) {
