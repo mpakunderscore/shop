@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Batteries Today</title>
+        <title>BT</title>
 
         <meta name="description" content="batteries shop">
 
@@ -42,7 +42,7 @@
 
             <div id="top">
                 <div>
-                    <a href="/"><img src="/images/preview.png" style="height: 50px"></a>
+                    <a href="/"><img src="/images/preview.png"  style="filter: grayscale(100%);height: 50px"></a>
                 </div>
                 <div id="contacts">
                     <div>г. Санкт-Петербург</div>
@@ -60,18 +60,20 @@
             <div class="menu system">
                 <!--<div onclick="includeHTML('about')">О нас</div>-->
                 <!--<div onclick="includeHTML('orders')">Заказы</div>-->
-                <div onclick="includeHTML('texts')">Статьи</div>
-                <div onclick="includeHTML('enter')">Вход</div>
+                <div onclick="includeHTML('texts')" class="button">Статьи</div>
+                <div onclick="includeHTML('login')" class="button">Вход</div>
                 <!--<div onclick="includeHTML('stat')">Статистика</div>-->
             </div>
 
         </div>
 
         <div class="menu">
-            <div onclick="includeHTML('shop')" class="active">Магазин</div>
-            <div onclick="includeHTML('delivery')">Оплата и доставка</div>
-            <div onclick="includeHTML('contacts')">Контакты</div>
-            <div onclick="includeHTML('questions')">Вопросы</div>
+            <div onclick="includeHTML('shop')" class="button mobile">Магазин</div>
+            <div onclick="showMenu()" class="button mobile">Меню</div>
+            <div onclick="includeHTML('shop')" class="button active">Магазин</div>
+            <div onclick="includeHTML('delivery')" class="button">Оплата и доставка</div>
+            <div onclick="includeHTML('contacts')" class="button">Контакты</div>
+            <div onclick="includeHTML('questions')" class="button">Вопросы</div>
         </div>
 
         <main></main>
@@ -117,7 +119,7 @@
 
         </footer>
 
-        <img src="/images/preview.png" style="width: 100px; padding-top: 100px">
+        <img src="/images/preview.png" style="width: 100px; padding-top: 100px; filter: grayscale(100%);">
 
     </body>
 

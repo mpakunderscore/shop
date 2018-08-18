@@ -16,6 +16,8 @@ app.use('/shop/:category', express.static(path.join(__dirname, 'web')));
 app.use('/contacts', express.static(path.join(__dirname, 'web')));
 app.use('/questions', express.static(path.join(__dirname, 'web')));
 app.use('/delivery', express.static(path.join(__dirname, 'web')));
+app.use('/texts', express.static(path.join(__dirname, 'web')));
+app.use('/login', express.static(path.join(__dirname, 'web')));
 
 app.use('/cart', express.static(path.join(__dirname, 'web')));
 

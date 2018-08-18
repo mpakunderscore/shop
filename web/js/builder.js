@@ -24,7 +24,7 @@ function includeHTML(name) {
                     addItemsById(name);
 
                 if (name.startsWith("cart"))
-                    addItemsById(name);
+                    addItemsToCart(name);
 
                 if (name.startsWith('shop/')) {
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name);

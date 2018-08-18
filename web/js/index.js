@@ -7,7 +7,9 @@ xhttp.onreadystatechange = function() {
         state.items = JSON.parse(this.responseText);
         state.items['Корзина'] = {};
         state.items['Корзина']['Все'] = [];
-        state.items['Корзина']['Все'].push({name: "Test", images: "", description: ""});
+        state.items['Корзина']['Все'].push({name: "Test name", images: "", description: "Some test description", price: 1900});
+        state.items['Корзина']['Все'].push({name: "Test name", images: "", description: "Some test description", price: 300});
+        state.items['Корзина']['Все'].push({name: "Test name", images: "", description: "Some test description", price: 400});
     }
 };
 
@@ -15,8 +17,47 @@ xhttp.open("GET", "/items", true);
 xhttp.setRequestHeader("Content-type", "application/json");
 xhttp.send("JSON");
 
-function addItemsFromCart(id) {
+function addItemsToCart(id) {
 
+    // console.log(id);
+
+    let block = document.getElementById(id);
+
+    // console.log(block);
+
+    let title = block.childNodes[1].innerText.trim();
+
+    // console.log('addItemsById: ' + id)
+    // console.log(state);
+    let itemsHtml = "";
+
+    // console.log(state);
+
+    let itemsArray = state.items[title];
+
+    console.log(title)
+
+    let categories = Object.keys(itemsArray);
+
+    let selectedCategory = itemsArray[categories[0]];
+
+    // console.log(categories)
+
+    itemsHtml = buildCartItemsHtml(block, selectedCategory);
+
+    let categoriesHtml = "<div class='categories'>";
+    for (let i = 0; i < categories.length; i++) {
+
+        // console.log(category.innerText)
+        // console.log(category.innerText)
+
+        categoriesHtml += ("<div class='" + (i !== 0 ? 'category' : 'selectedCategory') + "' onclick='addItemsFromCategory(this)'>" + categories[i] + "</div>");
+    }
+    categoriesHtml += "</div>";
+
+    //TODO here render
+    block.nextElementSibling.innerHTML = categoriesHtml + itemsHtml + "<div class='cart'><div class='cartBack'></div><span>Оплатить</span></div>";
+    block.nextElementSibling.style.display = "flex";
 }
 
 function addItemsById(id) {
@@ -116,6 +157,40 @@ function buildItemsHtml(block, category) {
     return itemsHtml;
 }
 
+function buildCartItemsHtml(block, category) {
+
+    console.log(category)
+
+    let itemsHtml = "";
+
+    for (let i = 0; i < category.length; i++) {
+
+        itemsHtml +=
+            "<div class='item'>" +
+            "<div class='images'><img src='" + category[i].images.split('\n')[0] + "'>" + "</div>" +
+            "<div class='name'>" + category[i].name + "</div>" +
+            "<div class='description'>" + category[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
+            "<div class='price'>" + category[i].price + " руб</div>" +
+            "</div>";
+    }
+
+    return itemsHtml;
+}
+
 function showMain() {
 
+}
+
+function showMenu() {
+
+    let buttons = document.getElementsByClassName('button');
+
+    for (let i = 0; i < buttons.length; i++) {
+
+        if (!buttons[i].classList.contains('mobile')) {
+            buttons[i].style.display = "flex";
+        } else {
+            buttons[i].style.display = "none";
+        }
+    }
 }

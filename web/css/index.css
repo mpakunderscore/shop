@@ -58,6 +58,8 @@ a:hover {
 #title {
     font-size: 48px;
     padding-top: 50px;
+    height: 60px;
+    line-height: 60px;
     text-transform: uppercase;
 }
 
@@ -183,6 +185,10 @@ textarea, select, input, button { outline: none; }
 
 .menu > div.active {
     border-top: 3px solid black;
+}
+
+.menu .button.mobile {
+    display: none;
 }
 
 #back {

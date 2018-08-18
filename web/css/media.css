@@ -36,7 +36,7 @@
         font-size: var(--font-size-big-mobile);
         justify-content: space-between;
     }
-    .menu div {
+    .menu > div {
         display: flex;
         flex-direction: column;
 
@@ -46,8 +46,8 @@
         /*padding-right: 15px;*/
         /*padding-bottom: 0;*/
     }
-    .menu div:hover, .menu div:active {
-        background-color: rgba(211, 211, 211, 0.05);
+    .menu > div:hover, .menu > div:active {
+        background-color: rgba(211, 211, 211, 0.3);
     }
     .menu div:first-child {
         padding-left: 0;
@@ -80,6 +80,19 @@
     }
     .items .price {
         font-size: var(--font-size-big-mobile);
+    }
+    .items .cart:active .cartBack {
+        width: 100%;
+    }
+
+    .menu div {
+        display: none;
+        /*height: 0;*/
+    }
+
+    .menu .button.mobile {
+        display: flex;
+        /*height: 0;*/
     }
 }
 
