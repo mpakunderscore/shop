@@ -20,7 +20,9 @@
 
         <link rel="stylesheet" type="text/css" href="/css/utils/images.css?v2">
 
+        <script src="/js/translate.js?v1"></script>
         <script src="/js/index.js?v2"></script>
+        <script src="/js/mobile.js?v2"></script>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40320768-9"></script>
@@ -42,7 +44,7 @@
 
             <div id="top">
                 <div>
-                    <a href="/"><img src="/images/preview.png"  style="filter: grayscale(100%);height: 50px"></a>
+                    <a href="/"><img src="/images/preview.png"  style="height: 50px"></a>
                 </div>
                 <div id="contacts">
                     <div>г. Санкт-Петербург</div>
@@ -60,35 +62,37 @@
             <div class="menu system">
                 <!--<div onclick="includeHTML('about')">О нас</div>-->
                 <!--<div onclick="includeHTML('orders')">Заказы</div>-->
-                <div onclick="includeHTML('texts')" class="button">Статьи</div>
-                <div onclick="includeHTML('login')" class="button">Вход</div>
+                <!--<div onclick="includeHTML('search')" class="button">Поиск</div>-->
+                <!--<div onclick="includeHTML('login')" class="button">Вход</div>-->
                 <!--<div onclick="includeHTML('stat')">Статистика</div>-->
             </div>
 
-        </div>
+            <div class="menu">
+                <div onclick="includeHTML('shop')" class="button mobile">Магазин</div>
+                <!--<div onclick="showMenu()" class="button mobile">Поиск</div>-->
+                <div onclick="showMenu()" class="button mobile">Меню</div>
 
-        <div class="menu">
-            <div onclick="includeHTML('shop')" class="button mobile">Магазин</div>
-            <div onclick="showMenu()" class="button mobile">Меню</div>
-            <div onclick="includeHTML('shop')" class="button active">Магазин</div>
-            <div onclick="includeHTML('delivery')" class="button">Оплата и доставка</div>
-            <div onclick="includeHTML('contacts')" class="button">Контакты</div>
-            <div onclick="includeHTML('questions')" class="button">Вопросы</div>
+                <div onclick="includeHTML('shop')" class="button active">Магазин</div>
+                <div onclick="includeHTML('delivery')" class="button">Оплата и доставка</div>
+                <div onclick="includeHTML('contacts')" class="button">Контакты</div>
+                <div onclick="includeHTML('questions')" class="button">Вопросы</div>
+            </div>
+
         </div>
 
         <main></main>
 
         <footer>
 
-            <div>
+            <div class="right">
                 ИНН 000<br/>
                 ОГРНИП 000<br/>
                 © 2006–2018, Electrotransport<br/>
-                <a href="/">info@electrotransport.club</a>
+                <a href="/">info@batteries.today</a>
             </div>
 
-            <div>
-                МЕНЮ<br/>
+            <div class="left">
+                <b>МЕНЮ</b><br/>
                 <a href="/search">Поиск</a><br/>
                 <a href="/">Магазин</a><br/>
                 <a href="/delivery">Доставка и оплата</a><br/>
@@ -97,8 +101,8 @@
                 <a href="/cart">Корзина</a><br/>
             </div>
 
-            <div>
-                КАТАЛОГ<br/>
+            <div class="right">
+                <b>КАТАЛОГ</b><br/>
                 Готовые аккумуляторы<br/>
                 Зарядные устройства<br/>
                 <a href="/shop/cell">Элементы питания</a><br/>
@@ -119,11 +123,11 @@
 
         </footer>
 
-        <img src="/images/preview.png" style="width: 100px; padding-top: 100px; filter: grayscale(100%);">
+        <img src="/images/preview.png" style="width: 100px; padding-top: 100px;">
 
     </body>
 
     <script src="/js/builder.js?v1"></script>
-    <script src="/js/robot.js?v1"></script>
+    <!--<script src="/js/robot.js?v1"></script>-->
 
 </html>

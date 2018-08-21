@@ -8,65 +8,47 @@ let app = express();
 let state = {};
 state.items = [];
 
-//STATIC WEB
+let spreadsheet = require('./server/spreadsheet.js')(state);
+
+//Static WEB
 app.use(express.static(path.join(__dirname, 'web')));
 
+//TODO
 // app.use('/shop', express.static(path.join(__dirname, 'web')));
 app.use('/shop/:category', express.static(path.join(__dirname, 'web')));
 app.use('/contacts', express.static(path.join(__dirname, 'web')));
 app.use('/questions', express.static(path.join(__dirname, 'web')));
 app.use('/delivery', express.static(path.join(__dirname, 'web')));
-app.use('/texts', express.static(path.join(__dirname, 'web')));
-app.use('/login', express.static(path.join(__dirname, 'web')));
+// app.use('/texts', express.static(path.join(__dirname, 'web')));
+// app.use('/login', express.static(path.join(__dirname, 'web')));
+app.use('/search', express.static(path.join(__dirname, 'web')));
 
 app.use('/cart', express.static(path.join(__dirname, 'web')));
 
-app.use('/stat', express.static(path.join(__dirname, 'web')));
-app.use('/store', express.static(path.join(__dirname, 'web')));
-app.use('/orders', express.static(path.join(__dirname, 'web')));
+// app.use('/stat', express.static(path.join(__dirname, 'web')));
+// app.use('/store', express.static(path.join(__dirname, 'web')));
+// app.use('/orders', express.static(path.join(__dirname, 'web')));
 
 // app.use('/batteries', express.static(path.join(__dirname, 'web')));
 // app.use('/cell', express.static(path.join(__dirname, 'web')));
 
-
-
-
-
 let server = require('http').Server(app);
-
 const port = process.env.PORT || 8080;
-
 server.listen(port);
 
-app.get('/items', function (request, response) {
 
-    let itemsModel = {};
-    for (let i = 0; i < state.items.length; i++) {
+//Dynamic WEB
 
-        let categories = state.items[i].category.split('/');
-
-        for (let j in categories) {
-            categories[j] = categories[j].trim();
-        }
-
-        if (itemsModel[categories[0]] === undefined)
-            itemsModel[categories[0]] = {};
-
-        if (itemsModel[categories[0]][categories[1]] === undefined)
-            itemsModel[categories[0]][categories[1]] = [];
-
-        itemsModel[categories[0]][categories[1]].push(state.items[i]);
-    }
-
-    response.json(itemsModel);
-});
-
-// let database = require('./server/database.js');
-
-let spreadsheet = require('./server/spreadsheet.js')(state);
 spreadsheet.getInfo();
 
+app.get('/items/array', function (request, response) {
+    response.json(state.items);
+});
+
+app.get('/items/model', function (request, response) {
+    response.json(state.itemsModel);
+});
+
 app.get('/update', function (request, response) {
-    spreadsheet.getInfo();
-    response.json('ok')
+    response.json(spreadsheet.getInfo());
 });

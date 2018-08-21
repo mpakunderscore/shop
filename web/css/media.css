@@ -3,7 +3,7 @@
         display: none !important;
     }
     .menu {
-        font-size: 16px !important;
+        font-size: var(--font-size) !important;
     }
 
 }
@@ -18,7 +18,7 @@
         font-size: var(--font-size-big-mobile);
     }
     #top {
-        font-size: 12px;
+        font-size: var(--font-size-small);
     }
     #top #search {
         display: none;
@@ -46,8 +46,10 @@
         /*padding-right: 15px;*/
         /*padding-bottom: 0;*/
     }
-    .menu > div:hover, .menu > div:active {
-        background-color: rgba(211, 211, 211, 0.3);
+    .menu > div.active {
+        /*background-color: rgba(211, 211, 211, 0.3);*/
+        border-bottom: none;
+        color: white;
     }
     .menu div:first-child {
         padding-left: 0;
@@ -67,6 +69,8 @@
 
     .block {
         /*max-height: 140px;*/
+        margin-top: 0;
+        margin-bottom: 20px;
     }
     .block.relative {
         /*max-height: none;*/
@@ -75,6 +79,9 @@
         /*height: 200px;*/
     }
 
+    .items {
+        margin-top: 70px;
+    }
     .items .name {
         font-size: var(--font-size-big-mobile);
     }
@@ -94,6 +101,28 @@
         display: flex;
         /*height: 0;*/
     }
+
+
+    .categories {
+        flex-direction: row;
+        left: 0;
+        right: auto;
+        top: 100%;
+
+        margin: 20px;
+    }
+    .categories div {
+        /*margin-right: 0;*/
+        margin-bottom: 0;
+    }
+
+    footer {
+        font-size: var(--font-size);
+    }
+
+    footer > div.right {
+        text-align: right;
+    }
 }
 
 @media only screen and (max-width : 800px) {
@@ -102,16 +131,9 @@
     }
     .block {
         border-radius: 0 !important;
-    }
-
-    .categories {
-        position: relative;
-        flex-direction: row;
-        padding-bottom: 20px;
-        left: 0;
-        width: auto;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
     .categories div {
-        margin-right: 20px;
+        /*margin-right: 20px;*/
     }
 }

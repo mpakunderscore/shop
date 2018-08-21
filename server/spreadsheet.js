@@ -1,5 +1,7 @@
 let globalState = {};
 
+let async = require('async');
+
 module.exports = function (state) {
 
     globalState = state;
@@ -15,81 +17,98 @@ module.exports = function (state) {
         let doc = new GoogleSpreadsheet('18T5uiUE1cri_ZVuD2fGxJE8gVQs6LKUjcI9q44DuFA0');
         let sheet;
 
-        doc.getInfo(function(err, info) {
+        async.series([
+            function getSheet(step) {
+                doc.getInfo(function(err, info) {
+                    sheet = info.worksheets[1];
+                    step();
+                });
+            },
+            function getCells(step) {
+                sheet.getCells({
+                    'min-row': 1,
+                    'max-row': 100,
+                    'return-empty': true
+                }, function(err, cells) {
 
-            // console.log('Err: ' + err);
-            // console.log('Author: ');
-            // console.log(info.author.email);
-            // console.log();
+                    let item = {};
 
-            sheet = info.worksheets[1];
+                    globalState.items = [];
 
-            // console.log(sheet);
+                    for (let i = 0; i < cells.length; i++) {
 
-            // globalState.items = [100];
+                        let cell = cells[i];
 
-            sheet.getCells({
-                'min-row': 1,
-                'max-row': 100,
-                'return-empty': true
-            }, function(err, cells) {
+                        if (cell.col > 7) {
+                            continue;
+                        }
+                        if (cell.col === 1) {
+                            item = {};
+                            item.name = cell.value;
 
-                let item = {};
+                            if (item.name === "")
+                                break;
 
-                globalState.items = [];
-
-                for (let i = 0; i < cells.length; i++) {
-
-                    let cell = cells[i];
-
-                    if (cell.col > 7) {
-                        continue;
+                            globalState.items.push(item)
+                        }
+                        if (cell.col === 2) {
+                            item.description = cell.value;
+                        }
+                        if (cell.col === 3) {
+                            item.images = cell.value;
+                        }
+                        if (cell.col === 4) {
+                            item.price = cell.value;
+                        }
+                        if (cell.col === 5) {
+                            item.count = cell.value;
+                        }
+                        if (cell.col === 6) {
+                            item.category = cell.value;
+                        }
                     }
 
-                    if (cell.col === 1) {
-                        item = {};
-                        item.name = cell.value;
+                    buildItemsModel();
+                    console.log('Done');
+                    step();
+                });
+            }
 
-                        if (item.name === "")
-                            return;
-
-                        globalState.items.push(item)
-                    }
-
-                    if (cell.col === 2) {
-
-                        item.description = cell.value;
-                    }
-
-                    if (cell.col === 3) {
-                        item.images = cell.value;
-                    }
-
-                    if (cell.col === 4) {
-                        item.price = cell.value;
-                    }
-
-                    if (cell.col === 5) {
-                        item.count = cell.value;
-                    }
-
-                    if (cell.col === 6) {
-                        item.category = cell.value;
-                    }
-
-                    if (cell.col === 6) {
-                        cell.value = 'test';
-                        cell.save();
-                    }
-
-                    // console.log('Cell R' + cell.row + 'C' + cell.col + ' = ' + cell.value);
-                }
-            });
+        ], function(err){
+            if( err ) {
+                console.log('Error: ' + err);
+            }
         });
+
+        return true;
     };
 
     return module;
 };
+
+function buildItemsModel() {
+
+    let itemsModel = {};
+    for (let i = 0; i < globalState.items.length; i++) {
+
+        let categories = globalState.items[i].category.split('/');
+
+        for (let j in categories) {
+            categories[j] = categories[j].trim().replace(/\s\s+/g, ' ');
+            categories[j] = categories[j].charAt(0).toUpperCase() + categories[j].slice(1);
+        }
+
+        if (itemsModel[categories[0]] === undefined)
+            itemsModel[categories[0]] = {};
+
+        if (itemsModel[categories[0]][categories[1]] === undefined)
+            itemsModel[categories[0]][categories[1]] = [];
+
+        itemsModel[categories[0]][categories[1]].push(globalState.items[i]);
+    }
+
+    globalState.itemsModel = itemsModel;
+}
 
 
 

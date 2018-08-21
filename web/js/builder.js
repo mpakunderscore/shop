@@ -7,7 +7,7 @@ function includeHTML(name) {
     console.log('path: ' + path);
     console.log('includeHTML: ' + name);
 
-    var main, i, elmnt, file, xhttp;
+    let main, elmnt, xhttp;
     /*loop through a collection of all HTML elements:*/
     main = document.getElementsByTagName("main");
     /*make an HTTP request using the attribute value as the file name:*/
@@ -19,20 +19,25 @@ function includeHTML(name) {
         if (this.readyState == 4) {
             if (this.status == 200) {
 
-                elmnt.innerHTML = this.responseText;
-                if (name.startsWith("shop/"))
-                    addItemsById(name);
-
-                if (name.startsWith("cart"))
-                    addItemsToCart(name);
+                //TODO add function call to state
 
                 if (name.startsWith('shop/')) {
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name);
                 } else if (!path.startsWith("/" + name) && name !== 'shop') {
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name.replace('/', ''));
                 } else if (name === 'shop') {
+                    buildShop();
                     window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/");
+                    return;
                 }
+
+                elmnt.innerHTML = this.responseText;
+
+                if (name.startsWith("shop/"))
+                    buildShopItems(name);
+
+                if (name.startsWith("cart"))
+                    buildCartItems(name);
             }
             if (this.status == 404) {
                 elmnt.innerHTML = "<div class='block'><div class='title'>Page not found</div></div>";

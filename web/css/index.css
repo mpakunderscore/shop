@@ -96,6 +96,16 @@ a:hover {
     line-height: 24px;
 }
 
+#top #logo {
+    /*width: 50px;*/
+    /*height: 50px;*/
+    /*height: 100%;*/
+}
+
+#top #cart-icon {
+    width: 50px;
+}
+
 #top #cart-icon img:hover {
     filter: invert(100%);
     cursor: pointer;
@@ -120,25 +130,28 @@ a:hover {
 
 #search input {
     /*font-size: 20px;*/
+    font-family: 'Exo 2', sans-serif;
     font-size: var(--font-size);
     font-weight: 300;
 
     padding: 10px;
 }
 
+/*#search input[type="text"]::placeholder {*/
+    /*font-weight: 300;*/
+/*}*/
+
 textarea, select, input, button { outline: none; }
 
-#back .menu {
+.menu {
     margin-bottom: 0;
 }
 
-#back .menu > div:hover {
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid rgba(128, 128, 128, 0.5);
+.menu > div {
+    border-bottom: 3px solid transparent;
 }
 
-#back .menu > div.active {
-    border-top: 3px solid transparent;
+.menu > div.active {
     border-bottom: 3px solid black;
 }
 
@@ -146,26 +159,15 @@ textarea, select, input, button { outline: none; }
 .menu {
     display: flex;
     flex-direction: row;
-    margin: 50px;
-    margin-top: 0;
+    /*margin: 50px;*/
+    /*margin-top: 0;*/
     /*padding: 0 20px;*/
 
     font-size: var(--font-size-big);
-    /*font-weight: 400;*/
-    /*color: rgba(0, 0, 0, 0.6);*/
-
-    /*background-color: whitesmoke;*/
-
-
-
-    /*border-radius: 3px;*/
-    /*box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);*/
 }
 
 .menu > div {
     padding: 20px;
-    border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;
 }
 .menu > div:first-child {
     padding-left: 40px;
@@ -177,14 +179,14 @@ textarea, select, input, button { outline: none; }
 .menu > div:hover {
     cursor: pointer;
     /*font-weight: 600;*/
-    border-top: 3px solid rgba(128, 128, 128, 0.5);
+    /*border-top: 3px solid rgba(128, 128, 128, 0.5);*/
     /*color: rgba(0, 0, 0, 0.9);*/
 
     /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
 }
 
 .menu > div.active {
-    border-top: 3px solid black;
+    /*border-top: 3px solid black;*/
 }
 
 .menu .button.mobile {
@@ -228,6 +230,8 @@ footer {
     font-size: var(--font-size-small);
     line-height: 150%;
     /*padding: 20px;*/
+
+    /*margin-top: 50px;*/
 }
 
 footer div {
