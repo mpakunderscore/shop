@@ -14,6 +14,12 @@ function includeHTML(name) {
 
     elmnt = main[0];
 
+    if (name === 'shop') {
+        buildShop();
+        window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase()}, "", "/");
+        return;
+    }
+
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
@@ -21,23 +27,21 @@ function includeHTML(name) {
 
                 //TODO add function call to state
 
-                if (name.startsWith('shop/')) {
-                    window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name);
-                } else if (!path.startsWith("/" + name) && name !== 'shop') {
-                    window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/" + name.replace('/', ''));
-                } else if (name === 'shop') {
-                    buildShop();
-                    window.history.pushState({"html": this.responseText, "pageTitle": name.toUpperCase()}, "", "/");
-                    return;
-                }
-
                 elmnt.innerHTML = this.responseText;
 
-                if (name.startsWith("shop/"))
-                    buildShopItems(name);
+                if (name.startsWith('shop/')) {
 
-                if (name.startsWith("cart"))
-                    buildCartItems(name);
+                    buildShopItems(name);
+                    window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase()}, "", "/" + name);
+
+                } else if (!path.startsWith("/" + name) && name !== 'shop') {
+
+                    if (name.startsWith("cart"))
+                        buildCartItems(name);
+
+                    window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase()}, "", "/" + name.replace('/', ''));
+                }
+
             }
             if (this.status == 404) {
                 elmnt.innerHTML = "<div class='block'><div class='title'>Page not found</div></div>";
@@ -80,6 +84,7 @@ window.onpopstate = function(e) {
 
     if (e.state){
         document.getElementsByTagName("main")[0].innerHTML = e.state.html;
+        console.log(e.state);
         // document.title = e.state.pageTitle;
     }
 };

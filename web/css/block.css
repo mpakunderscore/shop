@@ -9,13 +9,13 @@
     /*min-height: 100px;*/
     height: 100px;
     /*max-height: 300px;*/
-    /*overflow: hidden;*/
+    overflow: hidden;
 
 
     /*background-color: rgba(14, 230, 13, 0.16);*/
     background-color: white;
-    margin-top: 50px;
-    margin-bottom: 70px;
+    margin-top: 20px;
+    /*margin-bottom: 70px;*/
 
     cursor: pointer;
 
@@ -69,7 +69,7 @@
     display: block;
     /*z-index: 0;*/
 
-    overflow: hidden;
+    /*overflow: hidden;*/
 
     filter: blur(3px) saturate(3);
     transition: 1s filter;

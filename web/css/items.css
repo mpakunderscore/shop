@@ -5,11 +5,11 @@
 }
 
 .categories {
-    position: absolute;
+    /*position: absolute;*/
     display: flex;
     flex-direction: row;
 
-    top: 100%;
+    /*top: 100%;*/
 
     white-space: nowrap;
 
@@ -17,6 +17,7 @@
     text-align: right;
 
     margin-top: 20px;
+    margin-left: 20px;
 }
 
 .categories div {
@@ -50,14 +51,15 @@
 
 .items {
     position: relative;
-    display: none;
+    /*display: none;*/
     flex-direction: column;
     /*margin-bottom: 50px;*/
     /*overflow: hidden;*/
 
     padding: 0 20px;
 
-    margin-top: 50px;
+    /*margin-top: 50px;*/
+    margin-top: 20px;
 
     box-sizing: border-box;
 }
@@ -66,7 +68,7 @@
     /*height: 200px;*/
     overflow: hidden;
 
-    margin-bottom: 20px !important;
+    margin-bottom: 20px;
 
     border-bottom: 1px solid lightgray;
 
@@ -85,7 +87,7 @@
     /*max-width: 30%;*/
     width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    filter: grayscale(100%);
+    /*filter: grayscale(100%);*/
 }
 
 .items .name {

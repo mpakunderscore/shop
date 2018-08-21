@@ -80,7 +80,7 @@
     }
 
     .items {
-        margin-top: 70px;
+        /*margin-top: 70px;*/
     }
     .items .name {
         font-size: var(--font-size-big-mobile);

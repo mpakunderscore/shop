@@ -1,5 +1,5 @@
 let state = {};
-// state.cart = [];
+state.items = [];
 
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
@@ -7,6 +7,8 @@ xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
         state.items = JSON.parse(this.responseText);
+
+        buildShop();
 
         state.items['Корзина'] = {};
         state.items['Корзина']['Пусто'] = [];
@@ -22,6 +24,9 @@ xhttp.send("JSON");
 
 function buildShop() {
 
+    if (state.items.length === 0)
+        return;
+
     let main = document.getElementsByTagName("main")[0];
 
     let categories = Object.keys(state.items);
@@ -31,14 +36,17 @@ function buildShop() {
 
         categoriesHtml += "<div class='block' onclick='includeHTML(`shop/" + translate(categories[i]) + "`)'>";
         categoriesHtml += "<div class='title'>" + categories[i] + "</div>";
-        categoriesHtml += buildCategoriesHtml(Object.keys(state.items[categories[i]]), '', false);
         categoriesHtml += "</div>";
+
+        categoriesHtml += buildCategoriesHtml(Object.keys(state.items[categories[i]]), '', false);
     }
 
     main.innerHTML = categoriesHtml;
 }
 
 function buildShopItems(id) {
+
+    // console.log(id)
 
     let block = document.getElementById(id);
     let title = block.childNodes[1].innerText.trim();
@@ -47,35 +55,33 @@ function buildShopItems(id) {
     let categories = Object.keys(itemsArray);
     let selectedCategory = itemsArray[categories[0]];
 
+    let categoriesHtml = buildCategoriesHtml(categories, categories[0]);
     let itemsHtml = buildItemsHtml(selectedCategory, false);
 
-    let categoriesHtml = buildCategoriesHtml(categories, categories[0]);
-
     //TODO here render
-    block.getElementsByClassName('categories')[0].innerHTML = categoriesHtml;
-    block.nextElementSibling.innerHTML = itemsHtml;
-    block.nextElementSibling.style.display = "flex";
+    let main = block.parentNode;
+    main.innerHTML += categoriesHtml;
+    main.innerHTML += itemsHtml;
 }
 
 function buildCategoryItems(category) {
 
-    //TODO
-    let block = category.parentNode.parentNode.parentNode.getElementsByClassName('block')[0];
-    console.log(block)
-    let title = block.childNodes[1].innerText.trim();
+    let main = document.getElementsByTagName("main")[0];
+    let title = main.getElementsByClassName('title')[0].innerText.trim();
 
     let itemsArray = state.items[title];
     let categories = Object.keys(itemsArray);
     let selectedCategory = itemsArray[category.innerText];
 
+    let block = buildBlockHtml(title);
+    let categoriesHtml = buildCategoriesHtml(categories, category.innerText);
     let itemsHtml = buildItemsHtml(selectedCategory, false);
 
-    let categoriesHtml = buildCategoriesHtml(categories, categories[0]);
-
     //TODO here render
-    block.getElementsByClassName('categories')[0].innerHTML = categoriesHtml;
-    block.nextElementSibling.innerHTML = itemsHtml;
-    block.nextElementSibling.style.display = "flex";
+    main.innerHTML = "";
+    main.innerHTML += block;
+    main.innerHTML += categoriesHtml;
+    main.innerHTML += itemsHtml;
 }
 
 function buildCartItems(id) {
@@ -92,14 +98,14 @@ function buildCartItems(id) {
     let categoriesHtml = buildCategoriesHtml(categories, selectedCategory);
 
     //TODO here render
-    block.nextElementSibling.innerHTML = itemsHtml  + categoriesHtml;
-    block.nextElementSibling.style.display = "flex";
+    let main = block.parentNode;
+    main.innerHTML += categoriesHtml;
+    main.innerHTML += itemsHtml;
 }
 
 function buildItemsHtml(items, isCart) {
 
-    let itemsHtml = "";
-    // let itemsHtml = "<div class='items'>";
+    let itemsHtml = "<div class='items'>";
 
     for (let i = 0; i < items.length; i++) {
 
@@ -119,22 +125,14 @@ function buildItemsHtml(items, isCart) {
     if (isCart)
         itemsHtml += "<div class='cart'><div class='cartBack'></div><span>Оплатить</span></div>";
 
-    // itemsHtml += "</div>";
+    itemsHtml += "</div>";
 
     return itemsHtml;
 }
 
 function buildCategoriesHtml(items, selectedCategory, isCart) {
 
-    console.log(items)
-
     let categoriesHtml = "";
-
-    // categoriesHtml += "<div class='shop-categories'>";
-    // for (let i = 0; i < Object.keys(state.items).length; i++) {
-    //     categoriesHtml += ("<div onclick='includeHTML()'>" + Object.keys(state.items)[i] + "</div>");
-    // }
-    // categoriesHtml += "</div>";
 
     categoriesHtml += "<div class='categories'>";
     for (let i = 0; i < items.length; i++) {
@@ -143,4 +141,14 @@ function buildCategoriesHtml(items, selectedCategory, isCart) {
     categoriesHtml += "</div>";
 
     return categoriesHtml;
+}
+
+function buildBlockHtml(title) {
+    let blockHtml = "";
+
+    blockHtml += "<div class='block'>";
+    blockHtml += "<div class='title'>" + title + "</div>";
+    blockHtml += "</div>";
+
+    return blockHtml;
 }
