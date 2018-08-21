@@ -217,6 +217,7 @@ textarea, select, input, button { outline: none; }
 main {
     width: 100%;
     max-width: var(--height);
+    position: relative;
 }
 
 footer {

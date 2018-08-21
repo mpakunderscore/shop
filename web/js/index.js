@@ -44,24 +44,26 @@ function buildShop() {
     main.innerHTML = categoriesHtml;
 }
 
-function buildShopItems(id) {
+function buildShopItems() {
 
-    // console.log(id)
-
-    let block = document.getElementById(id);
-    let title = block.childNodes[1].innerText.trim();
+    let main = document.getElementsByTagName("main")[0];
+    let title = main.getElementsByClassName('title')[0].innerText.trim();
 
     let itemsArray = state.items[title];
     let categories = Object.keys(itemsArray);
     let selectedCategory = itemsArray[categories[0]];
 
-    let categoriesHtml = buildCategoriesHtml(categories, categories[0]);
-    let itemsHtml = buildItemsHtml(selectedCategory, false);
+    // let mainCategories = buildMainCategoriesHtml(title);
+    // let block = buildBlockHtml(title);
+    // let categoriesHtml = buildCategoriesHtml(categories, categories[0]);
+    // let itemsHtml = buildItemsHtml(selectedCategory, false);
 
     //TODO here render
-    let main = block.parentNode;
-    main.innerHTML += categoriesHtml;
-    main.innerHTML += itemsHtml;
+    main.innerHTML = "";
+    main.innerHTML += buildMainCategoriesHtml(title);;
+    main.innerHTML += buildBlockHtml(title);
+    main.innerHTML += buildCategoriesHtml(categories, categories[0]);
+    main.innerHTML += buildItemsHtml(selectedCategory, false);
 }
 
 function buildCategoryItems(category) {
@@ -73,32 +75,34 @@ function buildCategoryItems(category) {
     let categories = Object.keys(itemsArray);
     let selectedCategory = itemsArray[category.innerText];
 
-    let block = buildBlockHtml(title);
-    let categoriesHtml = buildCategoriesHtml(categories, category.innerText);
-    let itemsHtml = buildItemsHtml(selectedCategory, false);
+    // let block = buildBlockHtml(title);
+    // let categoriesHtml = buildCategoriesHtml(categories, category.innerText);
+    // let itemsHtml = buildItemsHtml(selectedCategory, false);
 
     //TODO here render
     main.innerHTML = "";
-    main.innerHTML += block;
-    main.innerHTML += categoriesHtml;
-    main.innerHTML += itemsHtml;
+    main.innerHTML += buildMainCategoriesHtml(title);;
+    main.innerHTML += buildBlockHtml(title);
+    main.innerHTML += buildCategoriesHtml(categories, category.innerText);
+    main.innerHTML += buildItemsHtml(selectedCategory, false);
 }
 
-function buildCartItems(id) {
+function buildCartItems() {
 
-    let block = document.getElementById(id);
-    let title = block.childNodes[1].innerText.trim();
+    let main = document.getElementsByTagName("main")[0];
+    let title = main.getElementsByClassName('title')[0].innerText.trim();
 
     let itemsArray = state.items[title];
     let categories = Object.keys(itemsArray);
     let selectedCategory = itemsArray[categories[0]];
 
+    let block = buildBlockHtml(title);
+    let categoriesHtml = buildCategoriesHtml(categories, categories[0]);
     let itemsHtml = buildItemsHtml(selectedCategory, true);
 
-    let categoriesHtml = buildCategoriesHtml(categories, selectedCategory);
-
     //TODO here render
-    let main = block.parentNode;
+    main.innerHTML = "";
+    main.innerHTML += block;
     main.innerHTML += categoriesHtml;
     main.innerHTML += itemsHtml;
 }
@@ -144,6 +148,7 @@ function buildCategoriesHtml(items, selectedCategory, isCart) {
 }
 
 function buildBlockHtml(title) {
+
     let blockHtml = "";
 
     blockHtml += "<div class='block'>";
@@ -151,4 +156,27 @@ function buildBlockHtml(title) {
     blockHtml += "</div>";
 
     return blockHtml;
+}
+
+function buildMainCategoriesHtml(title) {
+
+    let array = Object.keys(state.items);
+
+    array = array.filter(function(item) {
+        return item !== title
+    });
+
+    array = array.filter(function(item) {
+        return item !== "Корзина"
+    });
+
+    let buildMainCategoriesHtml = "";
+
+    buildMainCategoriesHtml += "<div class='main-categories'>";
+    for (let i = 0; i < array.length; i++) {
+        buildMainCategoriesHtml += "<div class='' onclick='includeHTML(`shop/" + translate(array[i]) + "`)'>" + array[i] + "</div>";
+    }
+    buildMainCategoriesHtml += "</div>";
+
+    return buildMainCategoriesHtml;
 }

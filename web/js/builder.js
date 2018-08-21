@@ -16,7 +16,7 @@ function includeHTML(name) {
 
     if (name === 'shop') {
         buildShop();
-        window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase()}, "", "/");
+        window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase(), "name": name}, "", "/");
         return;
     }
 
@@ -31,15 +31,15 @@ function includeHTML(name) {
 
                 if (name.startsWith('shop/')) {
 
-                    buildShopItems(name);
-                    window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase()}, "", "/" + name);
+                    buildShopItems();
+                    window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase(), "name": name}, "", "/" + name);
 
                 } else if (!path.startsWith("/" + name) && name !== 'shop') {
 
                     if (name.startsWith("cart"))
-                        buildCartItems(name);
+                        buildCartItems();
 
-                    window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase()}, "", "/" + name.replace('/', ''));
+                    window.history.pushState({"html": document.getElementsByTagName("main")[0].innerHTML, "pageTitle": name.toUpperCase(), "name": name}, "", "/" + name.replace('/', ''));
                 }
 
             }
@@ -84,7 +84,7 @@ window.onpopstate = function(e) {
 
     if (e.state){
         document.getElementsByTagName("main")[0].innerHTML = e.state.html;
-        console.log(e.state);
+        selectMenu(e.state.name);
         // document.title = e.state.pageTitle;
     }
 };

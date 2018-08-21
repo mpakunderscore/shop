@@ -1,8 +1,41 @@
-.shop-categories {
-    display: flex;
-    flex-direction: row;
-    white-space: nowrap;
+.main-categories {
+    position: absolute;
+    right: 100%;
+    text-align: right;
+    /*white-space: nowrap;*/
+
+    width: 200px;
+
+    padding: 20px;
 }
+
+.main-categories > div {
+
+    width: auto;
+
+    padding: 10px;
+    /*padding-right: 10px;*/
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    margin-bottom: 10px;
+
+    cursor: pointer;
+
+    /*transition: box-shadow 1s;*/
+}
+
+.main-categories > div:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*.shop-categories {*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*white-space: nowrap;*/
+/*}*/
 
 .categories {
     /*position: absolute;*/
