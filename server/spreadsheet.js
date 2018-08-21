@@ -20,7 +20,7 @@ module.exports = function (state) {
         async.series([
             function getSheet(step) {
                 doc.getInfo(function(err, info) {
-                    sheet = info.worksheets[1];
+                    sheet = info.worksheets[0];
                     step();
                 });
             },
@@ -64,7 +64,11 @@ module.exports = function (state) {
                             item.count = cell.value;
                         }
                         if (cell.col === 6) {
-                            item.category = cell.value;
+                            item.categories = [];
+                            item.categories.push(cell.value)
+                        }
+                        if (cell.col === 7) {
+                            item.categories.push(cell.value)
                         }
                     }
 
@@ -91,7 +95,7 @@ function buildItemsModel() {
     let itemsModel = {};
     for (let i = 0; i < globalState.items.length; i++) {
 
-        let categories = globalState.items[i].category.split('/');
+        let categories = globalState.items[i].categories;
 
         for (let j in categories) {
             categories[j] = categories[j].trim().replace(/\s\s+/g, ' ');
