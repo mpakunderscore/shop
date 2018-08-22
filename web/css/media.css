@@ -91,6 +91,9 @@
     .items .cart:active .cartBack {
         width: 100%;
     }
+    .items > div.item {
+        width: 100%;
+    }
 
     .menu div {
         display: none;
@@ -133,7 +136,23 @@
         border-radius: 0 !important;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
-    .categories div {
-        /*margin-right: 20px;*/
+    .items {
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width : 1200px) {
+    .main-categories {
+        position: relative;
+        right: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: auto;
+        /*white-space: nowrap;*/
+    }
+    .main-categories > div {
+        /*white-space: nowrap;*/
+        margin-bottom: 0;
     }
 }

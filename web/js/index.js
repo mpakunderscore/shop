@@ -118,7 +118,7 @@ function buildItemsHtml(items, isCart) {
             "<div class='images'><img src='" + items[i].images.split('\n')[0] + "'>" + "</div>" +
             "<div class='name'>" + items[i].name + "</div>" +
             "<div class='description'>" + items[i].description.replace(/(?:\r\n|\r|\n)/g, '<br/>') + "</div>" +
-            "<div class='price'>" + items[i].price + " руб</div>";
+            "<div class='price'>" + (items[i].price + "").replace("000", " 000") + " руб</div>";
 
         if (!isCart)
             itemsHtml += "<div class='cart'><div class='cartBack'></div><span>В корзину</span><div class='electrocontact'></div></div>";
