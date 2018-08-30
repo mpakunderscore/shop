@@ -153,6 +153,8 @@
     }
     .main-categories > div {
         /*white-space: nowrap;*/
-        margin-bottom: 0;
+        margin: 5px;
+        /*margin-right: 5px*/
+        /*text-align: left;*/
     }
 }
