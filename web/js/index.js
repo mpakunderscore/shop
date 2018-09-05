@@ -14,9 +14,6 @@ function getItems() {
 
             state.items['Корзина'] = {};
             state.items['Корзина']['Все'] = [];
-            // state.items['Корзина']['Пусто'].push({name: "Test name", images: "", description: "Some test description", price: 1900});
-            // state.items['Корзина']['Пусто'].push({name: "Test name", images: "", description: "Some test description", price: 300});
-            // state.items['Корзина']['Пусто'].push({name: "Test name", images: "", description: "Some test description", price: 400});
         }
     };
 
@@ -88,7 +85,7 @@ function buildCategoryItems(category) {
 
     //TODO here render
     main.innerHTML = "";
-    main.innerHTML += buildMainCategoriesHtml(title);;
+    main.innerHTML += buildMainCategoriesHtml(title);
     main.innerHTML += buildBlockHtml(title);
     main.innerHTML += buildCategoriesHtml(categories, category.innerText);
     main.innerHTML += buildItemsHtml(selectedCategory, false);
